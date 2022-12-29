@@ -1,5 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const webpack = require("webpack");
 const prod = process.env.NODE_ENV === "production";
 
@@ -31,7 +34,7 @@ module.exports = {
     // output : 번들화 된 파일을 export할 경로와 파일명을 설정한다.
     path: path.join(__dirname, "/dist"),
     filename: "bundle.js",
-    sourceMapFilename: "[name].js.map",
+    // sourceMapFilename: "[name].js.map",
   },
 
   devServer: {

@@ -1,7 +1,8 @@
 import React from "react";
+import Counter from "./components/Counter";
 
 const App = () => {
-  return <div>안녕</div>;
+  return <Counter />;
 };
 
 export default App;
