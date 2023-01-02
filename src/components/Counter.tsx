@@ -1,23 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
+import {
+  decrease,
+  decreaseAsync,
+  increase,
+  increaseAsync,
+} from "../store/counter";
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
+  const count = useSelector((state: RootState) => state.counter.value);
+  const dispatch = useDispatch<AppDispatch>();
 
-  const decrease = () => {
-    setCount((prev) => prev - 1);
+  const onDecrease = () => {
+    dispatch(decrease());
   };
 
-  const increase = () => {
-    setCount((pres) => pres + 1);
+  const onIncrease = () => {
+    dispatch(increase());
+  };
+
+  const onIncreaseAsync = () => {
+    dispatch(increaseAsync());
+  };
+
+  const onDecreaseAsync = () => {
+    dispatch(decreaseAsync());
   };
   return (
     <div>
       <CounterTitle>This is Counter</CounterTitle>
       <CounterContent>Now Count is {count}</CounterContent>
       <ButtonContainer>
-        <DecreaseButton onClick={decrease}>감소</DecreaseButton>
-        <IncreaseButton onClick={increase}>증가</IncreaseButton>
+        <DecreaseButton onClick={onDecrease}>감소</DecreaseButton>
+        <IncreaseButton onClick={onIncrease}>증가</IncreaseButton>
+        <IncreaseButton onClick={onDecreaseAsync}>1초 감소</IncreaseButton>
+        <IncreaseButton onClick={onIncreaseAsync}>1초 증가</IncreaseButton>
       </ButtonContainer>
     </div>
   );
@@ -43,7 +62,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 10rem;
+  width: 15rem;
   margin: 0 auto;
   button + button {
     margin-left: 8px;

@@ -24,9 +24,10 @@ module.exports = {
     /* module : 이 옵션에 설치한 ts-loader와 babel-loader를 설정하면 된다. loader들은 오른쪽에서 왼쪽 방향으로 적용되기 때문에 ts-loader를 babel-loader보다 오른쪽에 위치시켜야 한다. */
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|tsx)?$/,
         use: ["babel-loader", "ts-loader"],
       },
+      { test: /\.(js|jsx)?$/, use: "babel-loader" },
     ],
   },
 
